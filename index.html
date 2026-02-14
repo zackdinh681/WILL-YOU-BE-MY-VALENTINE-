@@ -1,1 +1,62 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Will You Be My Valentine?</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #fff0f5;\n            text-align: center;\n            color: #ff69b4;\n        }\n        .proposal {\n            font-size: 2rem;\n            margin: 20px;\n        }\n        #countdown {\n            font-size: 3rem;\n            margin: 20px;\n        }\n        .buttons {\n            margin: 10px;\n        }\n        .heart-explosion {\n            display: none;\n            position: fixed;\n            width: 100%;\n            height: 100%;\n            background: url(\"heart-explosion.png\") no-repeat center center;\n            background-size: cover;\n            z-index: 1;\n        }\n        .calculator {\n            margin: 20px;\n        }\n        .footer {\n            margin-top: 50px;\n            font-size: 0.8rem;\n            color: #d8bfd8;\n        }\n    </style>\n</head>\n<body>\n    <nav>\n        <h1>Will You Be My Valentine?</h1>\n    </nav>\n\n    <div class=\"proposal\">\n        <h2 id=\"typingEffect\">\</h2>\n        <div id=\"countdown\"></div>\n    </div>\n\n    <div class=\"buttons\">\n        <button id=\"yesButton\">Yes ❤️</button>\n        <button id=\"noButton\">No 💔</button>\n    </div>\n\n    <div id=\"heartExplosion\" class=\"heart-explosion\"></div>\n\n    <div class=\"calculator\">\n        <h3>Calculator</h3>\n        <div id=\"display\">0</div>\n        <div id=\"buttons\">\n            <button>1</button>\n            <button>2</button>\n            <button>3</button>\n            <button>+</button>\n            <button>4</button>\n            <button>5</button>\n            <button>6</button>\n            <button>-</button>\n            <button>7</button>\n            <button>8</button>\n            <button>9</button>\n            <button>*</button>\n            <button>0</button>\n            <button>=</button>\n            <button>C</button>\n        </div>\n    </div>\n\n    <div class=\"message\">\n        <h3>Send a Message</h3>\n        <textarea id=\"messageInput\"></textarea>\n        <button id=\"sendMessage\">Send</button>\n    </div>\n\n    <div class=\"footer\">\n        <p>&copy; 2026 Valentine’s Day</p>\n    </div>\n\n    <script>\n        // Typing effect\n        const text = \"Will you be my Valentine?\";\n        let i = 0;\n        const typingEffect = () => {\n            if (i < text.length) {\n                document.getElementById('typingEffect').innerHTML += text.charAt(i);\n                i++;\n                setTimeout(typingEffect, 100);\n            }\n        };\n        typingEffect();\n\n        // Countdown Timer\n        const countDownDate = new Date(\"2026-02-15T00:00:00\").getTime();\n        const countdownFunction = setInterval(() => {\n            const now = new Date().getTime();\n            const distance = countDownDate - now;\n            const days = Math.floor(distance / (1000 * 60 * 60 * 24));\n            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));\n            document.getElementById('countdown').innerHTML = days + 'd ' + hours + 'h ' + \"0m 0s\";\n            if (distance < 0) {\n                clearInterval(countdownFunction);\n                document.getElementById('countdown').innerHTML = 'EXPIRED';\n            }\n        }, 1000);\n\n        // Heart explosion effect\n        document.getElementById('yesButton').onclick = function() {\n            document.getElementById('heartExplosion').style.display = 'block';\n            setTimeout(() => {document.getElementById('heartExplosion').style.display = 'none';}, 2000);\n        };\n        document.getElementById('noButton').onclick = function() {\n            alert('Oh no!');\n        };\n\n        // Basic Calculator Logic\n        let currentInput = '';\n        document.querySelectorAll('#buttons button').forEach(button => {\n            button.onclick = function() {\n                if (this.innerHTML === '=') {\n                    // Evaluate current input\n                    document.getElementById('display').innerHTML = eval(currentInput);\n                    currentInput = '';\n                } else if (this.innerHTML === 'C') {\n                    // Clear the display\n                    currentInput = '';\n                    document.getElementById('display').innerHTML = '0';\n                } else {\n                    currentInput += this.innerHTML;\n                    document.getElementById('display').innerHTML = currentInput;\n                }\n            };\n        });\n\n        // Send message logic\n        document.getElementById('sendMessage').onclick = function() {\n            alert('Message Sent: ' + document.getElementById('messageInput').value);\n        };\n    </script>\n</body>\n</html>\n
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Phương 💎</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    background: black;
+    color: gold;
+    font-family: "Georgia", serif;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Intro Screen */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #111, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+
+#enterBtn {
+    padding: 15px 40px;
+    font-size: 20px;
+    border-radius: 40px;
+    border: 2px solid gold;
+    background: gold;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0 0 20px gold;
+}
+
+/* Main Content */
+#main {
+    display: none;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #111, #000);
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    text-shadow: 0 0 20px gold;
+    min-height: 60px;
+}
+
+.buttons {
+    position: relative;
+    width
