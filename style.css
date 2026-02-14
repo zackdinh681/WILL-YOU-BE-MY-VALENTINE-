@@ -1,0 +1,65 @@
+.heart {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: heartbeat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+body {
+  background: linear-gradient(45deg, pink, lightcoral);
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  max-width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.proposal-page,
+.calculator {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .heart {
+    width: 80px;
+    height: 80px;
+  }
+}
